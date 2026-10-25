@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>carrozzeria MP3</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&family=Barlow+Condensed:wght@500;600&display=swap">
+<style>
+:root{color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--amb:#ff9a1f;--ambd:#4a2a06;--lcd:#0b0603}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:#050505;display:flex;justify-content:center;padding:16px 10px;font-family:'Barlow Condensed',sans-serif;color:#cfd2d6}
+.wrap{width:100%;max-width:640px}
+.face{position:relative;border-radius:10px;padding:10px 12px 12px;background:linear-gradient(180deg,#26272b 0,#111214 8%,#0c0d0e 60%,#151618 100%);
+ border:1px solid #000;box-shadow:0 0 0 2px #4b4e54,0 0 0 3px #17181a,0 18px 40px #000c,inset 0 1px 0 #ffffff26,inset 0 -2px 6px #000}
+.logo{display:flex;justify-content:space-between;align-items:center;margin:0 2px 8px}
+.logo b{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:600;font-size:23px;letter-spacing:.01em;text-transform:none;background:linear-gradient(180deg,#fff2a8,#e6b800 55%,#9a7600);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 0 #000)}
+.logo span{font-size:11px;color:#8a8e94;letter-spacing:.08em}
+.main{display:grid;grid-template-columns:76px 1fr 76px;gap:10px;align-items:center}
+/* knob */
+.knobwrap{display:flex;flex-direction:column;align-items:center;gap:6px}
+.knob{position:relative;width:70px;height:70px;border-radius:50%;touch-action:none;cursor:grab;
+ background:conic-gradient(from 0deg,#8d9198,#e6e8eb,#8d9198,#d3d6da,#6f737a,#e6e8eb,#8d9198);box-shadow:0 0 0 3px #0b0b0c,0 0 0 4px #55585e,0 5px 8px #000c}
+.knob:before{content:"";position:absolute;inset:7px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#3b3d42,#151618 75%);box-shadow:inset 0 1px 0 #ffffff30}
+.knob i{position:absolute;left:50%;top:9px;width:3px;height:12px;margin-left:-1.5px;background:var(--amb);border-radius:2px;box-shadow:0 0 6px var(--amb);transform-origin:50% 26px}
+.knobwrap small{font-size:11px;color:var(--amb);letter-spacing:.08em;opacity:.85}
+/* display */
+.disp{background:var(--lcd);border-radius:6px;padding:7px 9px 6px;box-shadow:inset 0 0 0 2px #000,inset 0 0 16px #000,0 0 0 1px #3a3c40,0 1px 0 #ffffff1c;font-family:VT323,monospace;color:var(--amb);text-shadow:0 0 6px #ff7a0066;min-width:0;overflow:hidden}
+.d1{display:flex;justify-content:space-between;font-size:18px;line-height:1;opacity:.9}
+.nm{position:relative;overflow:hidden;white-space:nowrap;height:26px;font-size:26px;line-height:26px;margin-top:2px}
+.nm span{display:inline-block;padding-right:40px}
+.nm.mq span{animation:mq 12s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+.d3{display:flex;align-items:flex-end;gap:8px;margin-top:3px}
+.tm{font-size:38px;line-height:.9;min-width:98px}
+#sp{flex:1;height:34px;width:100%;display:block}
+.sk{height:6px;margin-top:5px;border:1px solid var(--ambd);cursor:pointer;position:relative;touch-action:none}
+.sk div{position:absolute;left:0;top:0;bottom:0;background:var(--amb);box-shadow:0 0 6px #ff7a0088}
+/* multi control */
+.multi{position:relative;width:70px;height:70px;border-radius:50%;margin:auto;background:radial-gradient(circle at 50% 35%,#2d2f33,#101113);box-shadow:0 0 0 3px #0b0b0c,0 0 0 4px #55585e,0 4px 8px #000b,inset 0 1px 0 #ffffff22}
+.multi button{position:absolute;width:24px;height:24px;border:0;background:transparent;color:var(--amb);font-size:13px;padding:0;cursor:pointer;display:grid;place-items:center;text-shadow:0 0 4px #ff7a0088}
+.multi .u{left:23px;top:3px}.multi .dn{left:23px;bottom:3px}.multi .l{left:3px;top:23px}.multi .r{right:3px;top:23px}
+.multi .c{left:22px;top:22px;width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#4a4d53,#1a1b1e);box-shadow:inset 0 1px 0 #ffffff30,0 1px 3px #000;font-size:11px}
+.multi .c.on{color:#fff;box-shadow:0 0 10px #ff9a1f88,inset 0 1px 0 #ffffff30}
+/* buttons */
+.row{display:grid;gap:6px;margin-top:9px}
+.r1{grid-template-columns:repeat(6,1fr)}
+.row button.k{height:34px;border-radius:4px;border:1px solid #000;color:var(--amb);font-family:'Barlow Condensed',sans-serif;font-weight:500;font-size:14px;letter-spacing:.05em;cursor:pointer;
+ background:linear-gradient(180deg,#2c2d31,#16171a);box-shadow:inset 0 1px 0 #ffffff1f,0 1px 0 #000;text-shadow:0 0 5px #ff7a0070;padding:0}
+.row button.k:active{background:linear-gradient(180deg,#141517,#232427)}
+.row button.k.on{color:#fff;text-shadow:0 0 8px #ff9a1f}
+.pre button.k{height:30px;font-size:16px}
+button:focus-visible,.knob:focus-visible,.sk:focus-visible,li:focus-visible{outline:2px solid #fff;outline-offset:2px}
+ol{list-style:none;margin:12px 0 0;padding:0;max-height:200px;overflow:auto;background:var(--lcd);border-radius:6px;box-shadow:inset 0 0 0 2px #000,0 0 0 1px #3a3c40;font-family:VT323,monospace;font-size:21px;color:var(--amb)}
+li{display:flex;gap:10px;padding:3px 10px;cursor:pointer;line-height:1.15}
+li .n{width:26px;opacity:.7}li .t{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+li.cur{background:var(--amb);color:#1a0d00;text-shadow:none}
+li.empty{cursor:default;justify-content:center;opacity:.7}
+@media(max-width:420px){.main{grid-template-columns:62px 1fr 62px;gap:6px}.knob,.multi{transform:scale(.88)}.tm{font-size:32px;min-width:84px}.logo b{font-size:20px}}
+@media(prefers-reduced-motion:reduce){.nm.mq span{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <div class="face">
+  <div class="logo"><b>carrozzeria</b><span>MP3 / USB</span></div>
+  <div class="main">
+   <div class="knobwrap">
+    <div class="knob" id="knob" tabindex="0" role="slider" aria-label="Səs" aria-valuemin="0" aria-valuemax="30" aria-valuenow="24"><i id="kd"></i></div>
+    <small>VOL / MUTE</small>
+   </div>
+   <div class="disp" aria-live="off">
+    <div class="d1"><span id="src">USB</span><span id="trk">--/--</span></div>
+    <div class="nm" id="nm"><span id="nmt">NO DEVICE</span></div>
+    <div class="d3"><div class="tm" id="tm">0:00</div><canvas id="sp"></canvas></div>
+    <div class="sk" id="sk" role="slider" tabindex="0" aria-label="Mövqe" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="skf" style="width:0"></div></div>
+   </div>
+   <div class="multi">
+    <button class="u" id="up" aria-label="10 san irəli">▲</button>
+    <button class="l" id="prev" aria-label="Əvvəlki">◀</button>
+    <button class="c" id="ok" aria-label="Oynat / dayandır">OK</button>
+    <button class="r" id="next" aria-label="Növbəti">▶</button>
+    <button class="dn" id="dn" aria-label="10 san geri">▼</button>
+   </div>
+  </div>
+  <div class="row r1">
+   <button class="k" id="src2">SRC</button><button class="k" id="band">REPEAT</button><button class="k" id="rnd">RANDOM</button>
+   <button class="k" id="disp">DISP</button><button class="k" id="mute">MUTE</button><button class="k" id="pl">PLAY</button>
+  </div>
+  <div class="row r1 pre" id="pre"></div>
+ </div>
+ <ol id="list"><li class="empty">SRC düyməsi ilə mahnı yükləyin</li></ol>
+ <input id="file" type="file" accept="audio/*,.mp3" multiple hidden>
+</div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var audio=new Audio();audio.preload="auto";
+var tracks=[],cur=-1,vol=24,rep=0,rnd=false,mode=0,ctx=null,an=null,fd=null,peaks=[];
+var cv=$("sp"),g=cv.getContext("2d"),NB=20;
+/* presets 1-6 */
+for(var i=1;i<=6;i++){(function(n){var b=document.createElement("button");b.className="k";b.textContent=n;b.setAttribute("aria-label","Mahnı "+n);b.onclick=function(){if(tracks[n-1])load(n-1,true)};$("pre").appendChild(b)})(i)}
+var pres=$("pre").children;
+function pad(n){return n<10?"0"+n:""+n}
+function fmt(t){if(!isFinite(t))t=0;var m=Math.floor(t/60),s=Math.floor(t%60);return m+":"+pad(s)}
+function setup(){if(ctx)return;try{ctx=new (window.AudioContext||window.webkitAudioContext)();var s=ctx.createMediaElementSource(audio);an=ctx.createAnalyser();an.fftSize=512;an.smoothingTimeConstant=.75;fd=new Uint8Array(an.frequencyBinCount);s.connect(an);an.connect(ctx.destination)}catch(e){ctx=null}}
+function msg(t){var el=$("nmt");el.textContent=t;fitName();clearTimeout(msg.t);msg.t=setTimeout(showName,1300)}
+function showName(){$("nmt").textContent=cur>=0?tracks[cur].name.toUpperCase():"NO DEVICE";fitName()}
+function fitName(){var n=$("nm");n.classList.remove("mq");if($("nmt").scrollWidth>n.clientWidth)n.classList.add("mq")}
+function renderList(){
+ var ol=$("list");ol.innerHTML="";
+ if(!tracks.length){ol.innerHTML='<li class="empty">SRC düyməsi ilə mahnı yükləyin</li>';return}
+ tracks.forEach(function(t,i){var li=document.createElement("li");li.tabIndex=0;if(i===cur)li.className="cur";
+  li.innerHTML='<span class="n">'+pad(i+1)+'</span><span class="t"></span>';li.children[1].textContent=t.name.toUpperCase();
+  li.onclick=function(){load(i,true)};li.onkeydown=function(e){if(e.key==="Enter"){load(i,true)}};ol.appendChild(li)});
+ for(var k=0;k<6;k++)pres[k].classList.toggle("on",k===cur);
+}
+function load(i,ap){
+ if(i<0||i>=tracks.length)return;cur=i;audio.src=tracks[i].url;
+ $("trk").textContent=pad(i+1)+"/"+pad(tracks.length);showName();renderList();
+ if(ap)play();
+}
+function play(){setup();if(ctx&&ctx.state==="suspended")ctx.resume();if(cur<0){if(tracks.length)load(0,true);else $("file").click();return}audio.play().catch(function(){})}
+function toggle(){if(audio.paused)play();else audio.pause()}
+function nextIdx(d){if(rnd&&tracks.length>1){var r;do{r=Math.floor(Math.random()*tracks.length)}while(r===cur);return r}var n=cur+d;if(n>=tracks.length)return rep===2?0:-1;if(n<0)return 0;return n}
+function next(){var n=nextIdx(1);if(n>=0)load(n,!audio.paused||true)}
+function prev(){if(audio.currentTime>3){audio.currentTime=0}else{load(Math.max(0,cur-1),!audio.paused)}}
+audio.addEventListener("play",function(){$("ok").classList.add("on");$("pl").classList.add("on");$("pl").textContent="PAUSE"});
+audio.addEventListener("pause",function(){$("ok").classList.remove("on");$("pl").classList.remove("on");$("pl").textContent="PLAY"});
+audio.addEventListener("ended",function(){if(rep===1){audio.currentTime=0;audio.play();return}var n=nextIdx(1);if(n>=0)load(n,true)});
+$("ok").onclick=toggle;$("pl").onclick=toggle;$("next").onclick=next;$("prev").onclick=prev;
+$("up").onclick=function(){audio.currentTime=Math.min(audio.duration||0,audio.currentTime+10)};
+$("dn").onclick=function(){audio.currentTime=Math.max(0,audio.currentTime-10)};
+$("src2").onclick=function(){$("file").click()};
+$("file").onchange=function(e){
+ var fs=Array.prototype.slice.call(e.target.files).filter(function(f){return f.type.indexOf("audio")===0||/\.(mp3|m4a|wav|ogg|flac)$/i.test(f.name)});
+ if(!fs.length)return;var first=tracks.length;
+ fs.forEach(function(f){tracks.push({url:URL.createObjectURL(f),name:f.name.replace(/\.[^.]+$/,"")})});
+ if(cur<0)load(first,false);else{renderList();$("trk").textContent=pad(cur+1)+"/"+pad(tracks.length)}
+ e.target.value="";
+};
+$("band").onclick=function(){rep=(rep+1)%3;$("band").classList.toggle("on",rep>0);msg(["REPEAT OFF","REPEAT ONE","REPEAT ALL"][rep])};
+$("rnd").onclick=function(){rnd=!rnd;$("rnd").classList.toggle("on",rnd);msg(rnd?"RANDOM ON":"RANDOM OFF")};
+$("disp").onclick=function(){mode=(mode+1)%3;msg(["SPECTRUM","TIME LEFT","SPECTRUM OFF"][mode])};
+$("mute").onclick=function(){audio.muted=!audio.muted;$("mute").classList.toggle("on",audio.muted);msg(audio.muted?"MUTE":"VOL "+vol)};
+/* volume knob */
+function setVol(v,show){vol=Math.max(0,Math.min(30,Math.round(v)));audio.volume=vol/30;$("kd").style.transform="rotate("+(-135+vol/30*270)+"deg)";$("knob").setAttribute("aria-valuenow",vol);if(show)msg("VOL "+vol)}
+setVol(24,false);
+var kd=false,ka=0,kacc=0,moved=false,kk=$("knob");
+function kang(e){var r=kk.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))*180/Math.PI}
+kk.addEventListener("pointerdown",function(e){kd=true;moved=false;ka=kang(e);kacc=vol;kk.setPointerCapture(e.pointerId)});
+kk.addEventListener("pointermove",function(e){if(!kd)return;var a=kang(e),d=a-ka;if(d>180)d-=360;if(d<-180)d+=360;ka=a;if(Math.abs(d)>0.3)moved=true;kacc+=d/9;setVol(kacc,true)});
+kk.addEventListener("pointerup",function(){kd=false;if(!moved){$("mute").click()}});
+kk.addEventListener("wheel",function(e){e.preventDefault();setVol(vol+(e.deltaY<0?1:-1),true)},{passive:false});
+kk.addEventListener("keydown",function(e){if(e.key==="ArrowUp"||e.key==="ArrowRight")setVol(vol+1,true);else if(e.key==="ArrowDown"||e.key==="ArrowLeft")setVol(vol-1,true)});
+/* seek bar */
+var sd=false;function sk(e){if(!audio.duration)return;var r=$("sk").getBoundingClientRect();audio.currentTime=Math.min(1,Math.max(0,(e.clientX-r.left)/r.width))*audio.duration}
+$("sk").addEventListener("pointerdown",function(e){sd=true;this.setPointerCapture(e.pointerId);sk(e)});
+$("sk").addEventListener("pointermove",function(e){if(sd)sk(e)});
+$("sk").addEventListener("pointerup",function(){sd=false});
+$("sk").addEventListener("keydown",function(e){if(e.key==="ArrowRight")audio.currentTime+=5;else if(e.key==="ArrowLeft")audio.currentTime-=5});
+/* loop */
+for(var i=0;i<NB;i++)peaks.push(0);
+function frame(){
+ var d=audio.duration||0,c=audio.currentTime||0;
+ $("tm").textContent=mode===1?"-"+fmt(d-c):fmt(c);
+ $("skf").style.width=d?(c/d*100)+"%":"0";$("sk").setAttribute("aria-valuenow",d?Math.round(c/d*100):0);
+ var r=cv.getBoundingClientRect(),dpr=window.devicePixelRatio||1,w=Math.round(r.width*dpr),h=Math.round(r.height*dpr);
+ if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}
+ g.clearRect(0,0,w,h);
+ if(mode!==2){
+  var playing=!audio.paused&&an;if(playing)an.getByteFrequencyData(fd);
+  var bw=w/NB,segH=Math.max(2,Math.floor(h/9)),gap=Math.max(1,Math.floor(segH/4));
+  for(var b=0;b<NB;b++){
+   var v=0;if(playing){var lo=Math.floor(Math.pow(b/NB,1.7)*fd.length*.55)+1,hi=Math.floor(Math.pow((b+1)/NB,1.7)*fd.length*.55)+2,s=0;for(var k=lo;k<hi;k++)s=Math.max(s,fd[k]);v=s/255}
+   peaks[b]=Math.max(v,peaks[b]-0.02);
+   var n=Math.round(v*8),pk=Math.round(peaks[b]*8);
+   for(var j=0;j<8;j++){var y=h-(j+1)*segH;g.fillStyle=(j<n||j===pk-1&&pk>0)?"#ff9a1f":"#3a2106";g.fillRect(b*bw+1,y,bw-2,segH-gap)}
+  }
+ }
+ requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+window.addEventListener("resize",fitName);
+document.addEventListener("keydown",function(e){if(e.code==="Space"&&e.target.tagName!=="BUTTON"){e.preventDefault();toggle()}});
+})();
+</script>
+</body>
+</html>
